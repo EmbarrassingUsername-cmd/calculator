@@ -47,6 +47,7 @@ function deleteFunction(){
 function evaluateFunction(){
     if (operatorValue&&firstValue&&secondValue){
         result=operate(operatorValue,firstValue,secondValue);
+        if (result===undefined){secondValue=""; displayEntry.innerText=""; return}
         displayEntry.innerText=result;
         displayCalc.innerText="";
         repeatSecond=secondValue
@@ -119,8 +120,8 @@ function operate(operator,b,c){
     if (operator==="subtract")return subtract(b,c);
     if (operator==="multiply")return multiply(b,c);
     if (operator==="divide"){
-        if(!(secondValue===0))return divide(b,c);
-        else alert("Please do not attempt division by zero this is a known bug with life v1.0.0 and successful division is not currently possible please consult with the developer of life to see when this will be patched though the project appears to be abandonned")
+        if(!(secondValue==="0"))return divide(b,c);
+        else return alert("Please do not attempt division by zero this is a known bug with Universe v1.0.0 and successful division is not currently possible please consult with the developer of Universe to see when this will be patched. Universe has not seen an update in nearly 14 billion years and the expected 2012 patch never happened")
     }
     else{alert("There appears to have been a problem please alert the developper if you haven't been fiddling in the console")}
 }
