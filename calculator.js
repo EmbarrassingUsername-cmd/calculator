@@ -11,7 +11,7 @@ let secondValue="";
 let result="";
 let repeatSecond="";
 let repeatFunction="";
-//global variables for calculator input and output
+//global variables for calculator input and output repeat variabless are to allow evaluate to repeat the action on clicking equals multiple times 
 operatorButton.forEach(element=> element.addEventListener("click", operatorFunction));
 numberButton.forEach(element=> element.addEventListener("click", numberFunction));
 equalsButton.addEventListener("click", evaluateFunction);
@@ -35,12 +35,13 @@ function deleteFunction(){
     }
     else if(operatorValue){
         operatorValue="";
-        displayCalc.innerText=firstValue;
+        displayCalc.innerText="";
+        displayEntry.innerText=firstValue
         return;
     }
     else if (firstValue){
         firstValue=firstValue.slice(0,-1);
-        displayCalc.innerText=firstValue
+        displayEntry.innerText=firstValue
     }
 };
 function evaluateFunction(){
@@ -72,6 +73,7 @@ function operatorFunction(){
         }
         else return alert("enter a value before hitting the operator")
     };
+//to switch between negative and positive values using minus button
     if(firstValue=="-"){
         firstValue=""
         displayEntry.innerText=firstValue
@@ -89,6 +91,7 @@ function operatorFunction(){
 function numberFunction(){
     if(operatorValue){
         if (secondValue.length<13){
+            //checks for previous use of decimal. ID cannot contain a . due to CSS
             if (this.id.charAt(this.id.length-1)=="l"){
                 if(!secondValue.indexOf(".")) secondValue+="."
             else return alert("decimal point already used")
