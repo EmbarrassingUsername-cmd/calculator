@@ -60,6 +60,7 @@ function evaluateFunction(){
     if (operatorValue&&firstValue&&secondValue){
         result=operate(operatorValue,firstValue,secondValue)
         result=Number.parseFloat(result).toPrecision(precision(result));
+        result=parseFloat(result)
         if (result===undefined){secondValue=""; displayEntry.innerText=""; return}
         displayEntry.innerText=result;
         displayCalc.innerText="";
@@ -72,6 +73,7 @@ function evaluateFunction(){
     else if(result&&repeatSecond&&repeatFunction&&!operatorValue&&!firstValue&&!secondValue){
         result=operate(repeatFunction,result,repeatSecond);
         result=Number.parseFloat(result).toPrecision(precision(result));
+        result=parseFloat(result)
         displayEntry.innerText=result;
     }
     else alert("Please try again there appears to be something missing");
